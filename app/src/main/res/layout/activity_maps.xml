@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"
-            android:background="@color/colorPrimary">
+            android:background="@color/naranjo">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -96,77 +96,6 @@
                     android:id="@+id/map"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:background="@color/colorPrimary">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:weightSum="1"
-                    android:gravity="center_vertical|center_horizontal">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/imageView2"
-                            android:src="@mipmap/ic_home_black_24dp"
-                            android:layout_weight="0.58" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:weightSum="1"
-                    android:gravity="center_vertical|center_horizontal">
-
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/imageView4"
-                            android:src="@mipmap/ic_perm_identity_black_18dp"
-                            android:layout_weight="0.63" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:weightSum="1"
-                    android:gravity="center_vertical|center_horizontal">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/imageView3"
-                            android:src="@mipmap/ic_star_rate_black_18dp"
-                            android:layout_weight="0.63" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal">
-
-                        <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="53dp"
-                            android:id="@+id/imageView"
-                            android:src="@mipmap/ic_traffic_black_24dp"/>
-                </LinearLayout>
-
         </LinearLayout>
 
 </LinearLayout>

@@ -25,8 +25,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.accessibility.AccessibilityManagerCompat;
 import android.support.v7.app.AlertDialog;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -67,8 +69,8 @@ public class MapsActivity extends ConexionMysqlHelper implements OnMapReadyCallb
     double lat = 0.0;
     double lng = 0.0;
     Marker marcador;
-    android.app.AlertDialog alert = null;
-    android.app.AlertDialog alert2 = null;
+    AlertDialog alert = null;
+    AlertDialog alert2 = null;
     String ciudad, ciudad2,direc, id_mob, json_string, JSON_STRING;
     int estCon=0, cuentaAlerta=0, servicioGPS, servicioInt;
     JSONObject jsonObject;
@@ -255,7 +257,7 @@ public class MapsActivity extends ConexionMysqlHelper implements OnMapReadyCallb
     }
 
     private void AlertNoGps() {
-        final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("El sistema GPS esta desactivado, ¿Desea activarlo?")
                 .setCancelable(false)
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
@@ -431,9 +433,14 @@ public class MapsActivity extends ConexionMysqlHelper implements OnMapReadyCallb
 
     private void confirmaAlerta(){
         eco.start();
-        final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
-        builder.setTitle("Nueva solicitud de servicios");
-        builder.setMessage("Nueva solicitud de servicio para :"+ tipoAlerta(tip_alert)+ " con la siguiente observación : "+ text_alert)
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(Html.fromHtml("<font color='#6E6E6E'>Nueva solicitud de servicios</font>"));
+        StringBuilder mensaje = new StringBuilder();
+        mensaje.append("<font color='#585858'>Nueva solicitud de servicio para : </font>");
+        mensaje.append("<font color='#FA5858'>").append(tipoAlerta(tip_alert)).append("</font> ");
+        mensaje.append("<font color='#585858'> con la siguiente observación : </font>");
+        mensaje.append("<font color='#FA5858'>").append(text_alert).append("</font> ");
+        builder.setMessage(Html.fromHtml(mensaje.toString()))
                 .setCancelable(false)
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
@@ -483,6 +490,13 @@ public class MapsActivity extends ConexionMysqlHelper implements OnMapReadyCallb
 
                 if (enServicio==0) {
                     alert = builder.create();
+                    alert.setOnShowListener(new DialogInterface.OnShowListener() {
+                        @Override
+                        public void onShow(DialogInterface dialog) {
+                            Window view = ((AlertDialog)dialog).getWindow();
+                            view.setBackgroundDrawableResource(R.drawable.alert_dialog_background);
+                        }
+                    });
                     alert.show();
 
                     new Handler().postDelayed(new Runnable() {

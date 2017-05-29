@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class RegServicios extends ConexionMysqlHelper {
 
     LinearLayout menuServGrua, menuServEmer, menuServOtros;
@@ -99,10 +98,13 @@ public class RegServicios extends ConexionMysqlHelper {
             if (actMGrua==0){
                 desplegarMenus(1);
                 actMGrua=1;
+                actMemer=0;
+                actMotros=0;
+                imEmer.setImageResource(R.drawable.abajo);
+                imOtros.setImageResource(R.drawable.abajo);
             }else{
                 replegarMenus();
                 actMGrua=0;
-
             }
 
         }});
@@ -111,11 +113,14 @@ public class RegServicios extends ConexionMysqlHelper {
 
             if (actMemer==0){
                 desplegarMenus(2);
+                actMGrua=0;
                 actMemer=1;
+                actMotros=0;
+                imGrua.setImageResource(R.drawable.abajo);
+                imOtros.setImageResource(R.drawable.abajo);
             }else{
                 replegarMenus();
                 actMemer=0;
-
             }
 
         }});
@@ -124,7 +129,11 @@ public class RegServicios extends ConexionMysqlHelper {
 
             if (actMotros==0){
                 desplegarMenus(3);
+                actMGrua=0;
+                actMemer=0;
                 actMotros=1;
+                imGrua.setImageResource(R.drawable.abajo);
+                imEmer.setImageResource(R.drawable.abajo);
             }else{
                 replegarMenus();
                 actMotros=0;
@@ -153,23 +162,23 @@ public class RegServicios extends ConexionMysqlHelper {
         switch (menu){
             case 1:
                 imGrua.setImageResource(R.drawable.arriba);
-                menuServGrua.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 250));
-                menuServEmer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0));
-                menuServOtros.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0));
+                Util.expand(menuServGrua, 1000);
+                Util.collapse(menuServEmer ,1000);
+                Util.collapse(menuServOtros ,1000);
                 break;
 
             case 2:
                 imEmer.setImageResource(R.drawable.arriba);
-                menuServEmer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 250));
-                menuServGrua.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0));
-                menuServOtros.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0));
+                Util.collapse(menuServGrua, 1000);
+                Util.expand(menuServEmer ,1000);
+                Util.collapse(menuServOtros ,1000);
                 break;
 
             case 3:
                 imOtros.setImageResource(R.drawable.arriba);
-                menuServOtros.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 250));
-                menuServGrua.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0));
-                menuServEmer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0));
+                Util.collapse(menuServGrua, 1000);
+                Util.collapse(menuServEmer ,1000);
+                Util.expand(menuServOtros ,1000);
                 break;
 
         }
@@ -180,9 +189,9 @@ public class RegServicios extends ConexionMysqlHelper {
         imGrua.setImageResource(R.drawable.abajo);
         imEmer.setImageResource(R.drawable.abajo);
         imOtros.setImageResource(R.drawable.abajo);
-        menuServGrua.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0));
-        menuServEmer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0));
-        menuServOtros.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0));
+        Util.collapse(menuServGrua, 1000);
+        Util.collapse(menuServEmer ,1000);
+        Util.collapse(menuServOtros ,1000);
 
     }
 

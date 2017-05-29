@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary">
+        android:background="@color/naranjo">
         <LinearLayout
             android:layout_width="220dp"
             android:layout_height="match_parent"
@@ -72,15 +72,10 @@
             android:layout_marginLeft="10dp" />
     </LinearLayout>
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"></TableLayout>
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp">
 
         <TextView
@@ -216,12 +211,20 @@
                 android:phoneNumber="true" />
         </LinearLayout>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center">
+
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="GUARDAR"
             android:id="@+id/btRegistrar"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center|bottom"
             android:layout_marginTop="10dp"
             android:background="@color/naranjo"
             android:textColor="@color/blanco" />
